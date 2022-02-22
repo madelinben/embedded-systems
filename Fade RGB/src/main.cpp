@@ -14,7 +14,15 @@ const int PWM_FREQ = 5000;
 const int PWM_RES = 8;
 
 void setup() {
-  // put your setup code here, to run once:
+    Serial.begin(115200);
+    
+    ledcAttachPin(RED_PIN, RED_CHANNEL);
+    ledcAttachPin(GREEN_PIN, GREEN_CHANNEL);
+    ledcAttachPin(BLUE_PIN, BLUE_CHANNEL);
+
+    ledcSetup(RED_CHANNEL, PWM_FREQ, PWM_RES);
+    ledcSetup(GREEN_CHANNEL, PWM_FREQ, PWM_RES);
+    ledcSetup(BLUE_CHANNEL, PWM_FREQ, PWM_RES);
 }
 
 void loop() {
