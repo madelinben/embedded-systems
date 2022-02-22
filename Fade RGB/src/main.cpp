@@ -34,12 +34,20 @@ void setup() {
 }
 
 void loop() {
-  delay(500);
-  displayColor(255, 0, 0);
+  unsigned int rgb[3];
+  rgb[0] = 255; //RED
+  rgb[1] = 0; //GREEN
+  rgb[2] = 0; //BLUE
 
-  delay(500);
-  displayColor(0, 255, 0);
-  
-  delay(500);
-  displayColor(0, 0, 255);
+  // Cross-Fade Intensity Value
+  for (int dec = 0; dec < 3; dec += 1) {
+    int inc = dec == 2 ? 0 : dec + 1;
+    for(int i = 0; i < 255; i += 1) {
+      rgb[dec] -= 1;
+      rgb[inc] += 1;
+
+      displayColor(rgb[0], rgb[1], rgb[2]);
+      delay(5);
+    }
+  }
 }
