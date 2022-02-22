@@ -10,8 +10,14 @@ const int RED_CHANNEL = 0;
 const int GREEN_CHANNEL = 1;
 const int BLUE_CHANNEL = 2;
 
-const int PWM_FREQ = 5000;
-const int PWM_RES = 8;
+const int PWM_FREQUENCY = 5000;
+const int PWM_RESOLUTION = 8;
+
+void displayColor(int R, int G, int B) {
+  ledcWrite(RED_CHANNEL, R);
+  ledcWrite(GREEN_CHANNEL, G);
+  ledcWrite(BLUE_CHANNEL, B);
+}
 
 void setup() {
     Serial.begin(115200);
@@ -20,11 +26,20 @@ void setup() {
     ledcAttachPin(GREEN_PIN, GREEN_CHANNEL);
     ledcAttachPin(BLUE_PIN, BLUE_CHANNEL);
 
-    ledcSetup(RED_CHANNEL, PWM_FREQ, PWM_RES);
-    ledcSetup(GREEN_CHANNEL, PWM_FREQ, PWM_RES);
-    ledcSetup(BLUE_CHANNEL, PWM_FREQ, PWM_RES);
+    ledcSetup(RED_CHANNEL, PWM_FREQUENCY, PWM_RESOLUTION);
+    ledcSetup(GREEN_CHANNEL, PWM_FREQUENCY, PWM_RESOLUTION);
+    ledcSetup(BLUE_CHANNEL, PWM_FREQUENCY, PWM_RESOLUTION);
+
+    displayColor(0, 0, 0);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  delay(500);
+  displayColor(255, 0, 0);
+
+  delay(500);
+  displayColor(0, 255, 0);
+  
+  delay(500);
+  displayColor(0, 0, 255);
 }
