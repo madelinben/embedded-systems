@@ -10,7 +10,7 @@
 
 ![Component Layout](docs/component-layout.png)
 
-![ESP32 GPIO Pinout](docs/esp32-pinout.png)
+![ESP32 GPIO Pinout](docs/esp32-pinout.jpeg)
 
 
 
